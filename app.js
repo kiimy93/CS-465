@@ -1,14 +1,19 @@
 require('./app_api/models/db');
-var createError = require('http-errors');
+
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const apiRouter = require('./app_api/routes/index');
+const cors = require('cors');  
 
+const apiRouter = require('./app_api/routes/index');
 var travelerRouter = require('./app_server/routes/index');
 
 var app = express();
+
+app.use(cors({
+  origin: 'http://localhost:4200'
+}));  
 
 // view engine setup
 app.set('views', path.join(__dirname, 'app_server', 'views'));

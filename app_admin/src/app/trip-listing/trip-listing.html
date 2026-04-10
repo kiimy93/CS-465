@@ -1,0 +1,13 @@
+<button routerLink="/add-trip" class="btn btn-primary mb-3">
+  Add Trip
+</button>
+
+<div class="container-fluid p-3">
+  <h1>Travlr Getaways Admin!</h1>
+
+  <div class="row">
+    <div class="col-md-3 mb-4" *ngFor="let trip of trips">
+      <app-trip-card [trip]="trip"></app-trip-card>
+    </div>
+  </div>
+</div>

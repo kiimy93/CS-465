@@ -1,0 +1,10 @@
+/* You can add global styles to this file, and also import other style files */.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 20px;
+}
+
+mat-card {
+  width: 300px;
+}
