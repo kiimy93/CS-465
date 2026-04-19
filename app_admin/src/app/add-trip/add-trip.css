@@ -1,12 +1,1 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
-@Component({
-  selector: 'app-add-trip',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './add-trip.html',
-  styleUrls: ['./add-trip.css']
-})
-export class AddTripComponent {
-}
+/* styles for add trip component */

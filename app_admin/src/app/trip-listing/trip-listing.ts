@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { TripCardComponent } from '../trip-card/trip-card';
@@ -14,9 +14,21 @@ import { TripDataService } from '../trip-data';
 export class TripListingComponent implements OnInit {
   trips: Array<any> = [];
 
-  constructor(private tripDataService: TripDataService) {}
+  constructor(
+    private tripDataService: TripDataService,
+    private cdr: ChangeDetectorRef
+  ) {}
 
-  async ngOnInit(): Promise<void> {
-    this.trips = await this.tripDataService.getTrips();
+  ngOnInit(): void {
+    this.tripDataService.getTrips().subscribe({
+      next: (data: any[]) => {
+        this.trips = data;
+        console.log('Trips loaded:', this.trips);
+        this.cdr.detectChanges();
+      },
+      error: (error: any) => {
+        console.error('Error loading trips:', error);
+      }
+    });
   }
 }

@@ -3,7 +3,7 @@
 
   <img
     class="card-img-top"
-    [src]="'images/' + trip.image"
+    [src]="'/images/' + trip.image"
     [alt]="trip.name"
   />
 
@@ -16,11 +16,15 @@
     <p class="card-text">${{ trip.perPerson }} per person</p>
     <p class="card-text">{{ trip.description }}</p>
 
-    <button class="btn btn-primary mt-2 me-2" (click)="editTrip(trip)">
+    <button *ngIf="authService.isLoggedIn()"
+            class="btn btn-primary mt-2 me-2"
+            (click)="editTrip(trip)">
       Edit Trip
     </button>
 
-    <button class="btn btn-danger mt-2" (click)="deleteTrip(trip.code)">
+    <button *ngIf="authService.isLoggedIn()"
+            class="btn btn-danger mt-2"
+            (click)="deleteTrip(trip.code)">
       Delete Trip
     </button>
   </div>
